@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{url_for('.static', filename='style.css')}}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="nav">
+        <h2 class="fs-2">Welcome, {{user.first_name}}! </h2>
+        <a class="" href="/recipes">back to recipes</a>
+        <a class="" href="/logout">Logout</a>
+    </div>
+    <div class="content">
+        <div>
+            <h3>{{recipe.name}}</h3>
+            <p>Posted by: {{recipe.user.first_name}}</p>
+        </div>
+        <div class="box">
+            <ul>
+                <li>Description: {{recipe.description}}</li>
+                <li>Under 30 minutes?: 
+                    {% if recipe.under == 1: %}
+                        Yes 
+                    {% else %}
+                        No
+                    {% endif %}
+                </li>
+                <li>Instructions: {{recipe.instructions}}</li>
+                <li>Date Made: {{recipe.date_made.strftime("%B %d, %Y")}}</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

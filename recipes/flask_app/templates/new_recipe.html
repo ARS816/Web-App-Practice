@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{url_for('.static', filename='style.css')}}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="nav">
+        <h2 class="fs-2">Add a New Recipe! </h2>
+        <a class="" href="/recipes">back to recipes</a>
+        <a class="" href="/logout">logout</a>
+    </div>
+    <div class="box">
+        <form action="/recipes/new/add" method="post">
+            <input type="hidden"  name="user_id" value="{{user.id}}">
+                {% with messages = get_flashed_messages(category_filter = ['recipes'])%}
+                    {% if messages %}
+                        {% for message in messages %} 
+                        <p class="red-text"> {{message}} </p> 
+                        {% endfor %}
+                    {% endif %}
+                {%endwith%}
+            <div class="input">
+                <label for="name">Recipe Name:</label>
+                <input type="text" name="name">
+            </div>
+            <div class="input">
+                <label for="description">Description:</label>
+                <input type="text" name="description">
+            </div>
+            <div class="input">
+                <label for="instructions">Instructions:</label>
+                <input type="text" name="instructions">
+            </div>
+            <div class="input">
+                <label for="date_made">Date Cooked/Made</label>
+                <input type="date" name="date_made">
+            </div>
+            <table>
+                <td><label for="under">Under 30 minutes?</label></td>
+                <td><input type="radio" name="under" value="1"/>Yes</td>  
+                <td><input type="radio" name="under" value="2">No</td>       
+            </table>
+            <input type="submit"value="submit">
+        </form>
+    </div>
+</body>
+</html>

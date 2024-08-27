@@ -1,0 +1,54 @@
+*{
+    margin: 0px auto;
+    padding: 0px auto;
+}
+
+.nav{
+    width: 75%;
+    padding: 25px;
+    color: rebeccapurple;
+    font-size: 35px;
+}
+
+.container{
+    width: 75%;
+    display: flex;
+
+}
+
+.box {
+    border: 2px solid black;
+    width: 45%;
+    padding: 15px;
+    align-items: center;
+}
+.box h2{
+    font-size: 30px;
+}
+.input{
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.input label{
+    margin-left: 15px;
+    font-size: 20px;
+}
+
+.input input{
+    margin-right: 15px;
+    border: 1px solid black;
+    width: 45%;
+}
+
+.btn{
+    border: 1px solid black;
+    padding: 3px;
+    font-size: 15px;
+    width: 150px;
+    margin-top: 5px;
+}
+.red-text{
+    color: red;
+}

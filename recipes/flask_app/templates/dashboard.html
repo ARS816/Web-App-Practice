@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{url_for('.static', filename='style.css')}}">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="nav">
+        <h2 class="fs-2">Welcome, {{user.first_name}}! </h2>
+        <div>
+            <a class="" href="/recipes/new" >+Create</a>
+            <a class="" href="/logout">Logout</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="content">
+            <p>All posted recipes:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="borders">Name</th>
+                        <th class="borders">Under 30 min</th>
+                        <th class="borders">Posted By</th>
+                        <th class="borders">Actions</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    {% for recipe in recipes %}
+                    <tr class="borders"> 
+                        <td class="borders">{{recipe.name}}</td>
+                        <td class="borders">
+                        {% if recipe.under == 1: %}
+                            Yes 
+                        {% else %}
+                            No
+                        {% endif %}
+                        </td>
+                        <td class="borders">{{recipe.user_id.first_name}}</td>
+                        <td class="borders">
+                            <a href="/recipes/{{recipe.id}}" class="btn btn-danger">view recipe</a>
+                            {% if recipe.user_id.id == user.id: %}
+                            <a href="/recipes/edit/{{recipe.id}}" class="btn btn-danger">edit</a>
+                            <a href="/recipes/delete/{{recipe.id}}" class="btn btn-danger">delete</a>
+                        {% endif %}
+                        </td>
+                    </tr>
+                        
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
