@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{url_for('.static', filename='css/new_edit.css')}}">
+    <title>New Trip</title>
+</head>
+<body>
+    <div class="nav">
+        <h2 class="fs-2">Hello {{user.first_name}}! Create a Trip!</h2>
+        <a class="" href="/logout">Logout</a>
+    </div>
+    <div class="container">
+        <div class="box">
+            <form action="/trips/new/add" method="post">
+                <input type="hidden"  name="user_id" value="{{user.id}}">
+                    {% with messages = get_flashed_messages(category_filter = ['trips'])%}
+                        {% if messages %}
+                            {% for message in messages %} 
+                            <p class="red-text"> {{message}} </p> 
+                            {% endfor %}
+                        {% endif %}
+                    {%endwith%}
+                <div class="input">
+                    <label for="destination">Destination:</label>
+                    <input type="text" name="destination">
+                </div>
+                <div class="input">
+                    <label for="start_date">Start Date:</label>
+                    <input type="date" name="start_date">
+                </div>
+                <div class="input">
+                    <label for="end_date">End Date:</label>
+                    <input type="date" name="end_date">
+                </div>
+                <div class="input">
+                    <label for="plan">Plan:</label>
+                    <input type="text" name="plan">
+                </div>
+                <div>
+                    <input type="submit"value="Submit" class="button">
+                    <button class="button"><a href="/dashboard">Cancel</a></button>
+                </div>
+                </form>
+        </div>
+    </div>
+</body>
+</html>

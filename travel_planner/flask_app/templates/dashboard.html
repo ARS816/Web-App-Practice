@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{url_for('.static', filename='css/dashboard.css')}}">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="nav">
+        <h2 class="fs-2">Hello {{user.first_name}}! </h2>
+        <div class="right_nav">
+            <a class="" href="/logout">Logout</a>
+            <a class="button" href="/trips/new" >Create a new trip!</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="content">
+            <p>Your trips:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="borders">Destination</th>
+                        <th class="borders">Start Date</th>
+                        <th class="borders">End Date</th>
+                        <th class="borders">Plan</th>
+                        <th class="borders">Actions</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    {% for trip in trips %}
+                        {% if trip.user_id.id == user.id: %}
+                            <tr> 
+                                <td class="borders"> <a href="/trips/{{trip.id}}"> {{trip.destination}}</a></td>
+                                <td class="borders">{{trip.start_date.strftime("%m/%d/%y")}}</td>
+                                <td class="borders">{{trip.end_date.strftime("%m/%d/%y")}}</td>
+                                <td class="borders">{{trip.plan}}</td>
+                                <td class="borders">
+                                    {% if trip.user_id.id == user.id: %}
+                                    <a href="/trips/delete/{{trip.id}}" class="btn btn-danger">Remove |</a>
+                                    <a href="/trips/edit/{{trip.id}}" class="btn btn-danger">Edit</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="content">
+            <p>Other trips:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="borders">Destination</th>
+                        <th class="borders">Start Date</th>
+                        <th class="borders">End Date</th>
+                        <th class="borders">Plan</th>
+                        <th class="borders">Actions</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    {% for trip in trips %}
+                        {% if trip.user_id.id != user.id: %}
+                            <tr> 
+                                <td class="borders"> <a href="/trips/{{trip.id}}"> {{trip.destination}}</a></td>
+                                <td class="borders">{{trip.start_date.strftime("%m/%d/%y")}}</td>
+                                <td class="borders">{{trip.end_date.strftime("%m/%d/%y")}}</td>
+                                <td class="borders">{{trip.plan}}</td>
+                                <td class="borders">
+                                    <a href="#" class="btn btn-danger">Join</a>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>

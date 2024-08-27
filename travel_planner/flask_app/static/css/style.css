@@ -1,0 +1,53 @@
+*{
+    margin: 0px auto;
+    padding: 0px auto;
+}
+
+.nav{
+    width: 75%;
+    padding: 25px;
+}
+
+.container{
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.box{
+    border: 2px solid black;
+    width: 45%;
+    height: auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.red-text{
+    color: red;
+}
+
+.input{
+    margin-top: 10px;
+    margin-bottom: 10px ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.input label{
+    margin-left: 5px;
+
+}
+.input input {
+    margin-right: 5px;
+    margin-left: 15px;
+}
+
+.button{
+    border: 1px solid black;
+    text-decoration: none;
+    padding: 3px; 
+    box-shadow: 3px 2px;
+    color: black;
+    margin-left: 250px;
+}

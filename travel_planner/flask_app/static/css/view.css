@@ -1,0 +1,47 @@
+*{
+    margin: 0px auto;
+    padding: 0px auto;
+}
+.container{
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.nav{
+    width: 75%;
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.right_nav{
+    width: 25%;
+    display: flex;
+}
+
+
+.box{
+    border: 2px solid black;
+    width: auto%;
+    height: auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+li{
+    list-style-type: none;
+    margin: 10px;
+    font-size: 20px;
+}
+h3{
+    font-size: 25px;
+}
+h2{
+    font-size: 35px;
+}
+a{
+    font-size: 20px;
+}
